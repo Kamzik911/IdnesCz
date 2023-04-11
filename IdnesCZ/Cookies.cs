@@ -11,9 +11,10 @@ namespace IdnesCZ
         {
             driver.Manage().Window.Size.Width.Equals(1920);
             driver.Manage().Window.Size.Height.Equals(1080);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
         }
-
+        
+        [SetUp]
         public void Sleep()
         {
 
