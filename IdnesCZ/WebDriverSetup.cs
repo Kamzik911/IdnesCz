@@ -4,8 +4,9 @@ namespace IdnesCZ
     internal class WebDriverSetup
     {
         private IWebDriver driver;
-
         
+
+
         public WebDriverSetup(string ChooseDriver)
         {
             if (ChooseDriver == "Chrome")
