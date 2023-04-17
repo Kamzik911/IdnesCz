@@ -18,7 +18,12 @@ namespace IdnesCZ.Tests
 
             /*var i = 1;
             Console.WriteLine(nameof(i));*/
-        }               
+        }
+        
+        private void Sleep()
+        {
+            Thread.Sleep(250);           
+        }
 
         [Test]
         public void UserLoginLogout()
@@ -30,12 +35,14 @@ namespace IdnesCZ.Tests
             driver.FindElement(By.CssSelector("#didomi-radio-option-disagree-to-all")).Click();
             driver.FindElement(By.XPath("//*[@id=\"didomi-consent-popup\"]/div/div/div/div/div[4]/div/button")).Click();
                     
+
             //LoginPage
             driver.FindElement(By.CssSelector("#portalogin-link")).Click();
 
             //SetEmail
             IWebElement setEmail = driver.FindElement(By.CssSelector("#prem_login > div > div:nth-child(3) > input[type=text]"));
             setEmail.SendKeys(User1.Email);
+            Sleep();
 
             //SetPassword
             driver.FindElement(By.CssSelector("#prem_login > div > div:nth-child(4) > input[type=password]")).SendKeys(User1.Password);

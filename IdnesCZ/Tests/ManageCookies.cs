@@ -4,7 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace IdnesCZ.Tests
 {
-    public class Cookies
+    public class ManageCookies
     {
         private IWebDriver driver = new ChromeBrowser().GetChromeBrowser();
 
@@ -16,7 +16,7 @@ namespace IdnesCZ.Tests
             driver.Manage().Window.Size.Height.Equals(1080);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
         }
-        public void Sleep()
+        private void Sleep()
         {
             Thread.Sleep(250);
         }
@@ -96,8 +96,8 @@ namespace IdnesCZ.Tests
             IWebElement Disagreeallpartners2 = driver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div.didomi-consent-popup-body__section > div.didomi-consent-popup-vendor.didomi-consent-popup-container-click-all > div.didomi-consent-popup-vendor__buttons > div > button.didomi-components-radio__option.didomi-components-radio__option--unselected"));
             Disagreeallpartners2.Click();
             Sleep();
-
         }
+
         [Test]
         public void SelectParticularPartners()
         {
