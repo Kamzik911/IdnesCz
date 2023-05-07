@@ -16,7 +16,7 @@ namespace IdnesCZ.Users
     }*/
     static class User1
     { 
-        public static string Email = "SwTester911Email@gmail.com";
+        public static string Email = "SwTester911@gmail.com";
         public static string Password = "asdf56sadf76";
     }
 

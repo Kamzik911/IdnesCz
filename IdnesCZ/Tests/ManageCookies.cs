@@ -167,7 +167,7 @@ namespace IdnesCZ.Tests
 }
 
 
-        //Can not click for now :-(
+        //Can not find element for now :-(
         /*[Test]
         public void ActiveAgentVirtualMindsGmbh()
         {
