@@ -1,34 +1,31 @@
-﻿
-namespace IdnesCZ
+﻿namespace IdnesCZ.Utilities
 {
     internal class WebDriverSetup
     {
-        private IWebDriver driver;
-        
-
+        public IWebDriver webDriver;
 
         public WebDriverSetup(string ChooseDriver)
         {
             if (ChooseDriver == "Chrome")
             {
-                this.driver = new ChromeDriver();
+                webDriver = new ChromeDriver();
             }
             else if (ChooseDriver == "Firefox")
             {
-                this.driver = new FirefoxDriver();
+                webDriver = new FirefoxDriver();
             }
             else if (ChooseDriver == "Edge")
             {
-                this.driver = new EdgeDriver();
+                webDriver = new EdgeDriver();
             }
-            else 
+            else
             {
-                this.driver = new ChromeDriver();
+                webDriver = new ChromeDriver();
             }
         }
         public IWebDriver GetWebDriver()
-            { 
-                return this.driver; 
-            }
+        {
+            return webDriver;
+        }
     }
 }

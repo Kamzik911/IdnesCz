@@ -7,4 +7,3 @@ global using OpenQA.Selenium.Chrome;
 global using OpenQA.Selenium.Internal;
 global using OpenQA.Selenium.Support.UI;
 global using OpenQA.Selenium.Support.Extensions;
-

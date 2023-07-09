@@ -1,88 +1,87 @@
+using IdnesCZ.Setup;
+using IdnesCZ.Utilities;
 
-namespace IdnesCZ
-{
-    public class Cookies
-    {
-        private IWebDriver driver = (new WebDriverSetup("Chrome").GetWebDriver());
+namespace IdnesCZ.Tests;
+
+public class TestCookies
+    {        
         
+    public IWebDriver webDriver = new WebDriverSetup("Chrome").GetWebDriver();
 
-        [SetUp]
-        public void Setup()
+
+        [SetUp]        
+        public void tSleep() 
         {
-            driver.Manage().Window.Size.Width.Equals(1920);
-            driver.Manage().Window.Size.Height.Equals(1080);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            Thread.Sleep(1000);
         }
-
-        public void Sleep()
-        {
-
-            Thread.Sleep(250);
+        public void BrowserSetup()
+        {            
+            webDriver.Manage().Window.Size.Width.Equals(1920);
+            webDriver.Manage().Window.Size.Height.Equals(1080);
+            webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);        
+            
         }
 
         [Test]
         public void DisagreeWebCookies()
-        {
-            driver.Navigate().GoToUrl("https://idnes.cz");
+        {            
+            webDriver.Navigate().GoToUrl("https://idnes.cz");
 
             //MoreInfoAboutCookies
-            IWebElement MoreInfoAboutCookies = driver.FindElement(By.CssSelector("#didomi-notice-learn-more-button"));
-            MoreInfoAboutCookies.Click();
-            Sleep();
+            ClickOnCssSelector("#didomi-notice-learn-more-button");
+            //webDriver.FindElement(By.CssSelector("#didomi-notice-learn-more-button")).Click();
             Console.Write("MoreInfoAboutCookies Done");
-            
 
             //DisAgreeDeviceInfo
-            IWebElement DisAgreeDeviceInfo = driver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div:nth-child(2) > div.didomi-consent-popup-categories.didomi-consent-popup-categories-nested > div:nth-child(1) > div > div.didomi-consent-popup-data-processing__buttons.didomi-consent-popup-data-processing__buttons_tcf_v2 > div > button:nth-child(1)"));
-            DisAgreeDeviceInfo.Click();
-            Sleep();
+            webDriver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div:nth-child(2) > div.didomi-consent-popup-categories.didomi-consent-popup-categories-nested > div:nth-child(1) > div > div.didomi-consent-popup-data-processing__buttons.didomi-consent-popup-data-processing__buttons_tcf_v2 > div > button:nth-child(1)")).Click();
+            tSleep();
 
             //AgreeDeviceInfo
-            driver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div:nth-child(2) > div.didomi-consent-popup-categories.didomi-consent-popup-categories-nested > div:nth-child(1) > div > div.didomi-consent-popup-data-processing__buttons.didomi-consent-popup-data-processing__buttons_tcf_v2 > div > button:nth-child(2)")).Click();
-            Sleep();
+            webDriver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div:nth-child(2) > div.didomi-consent-popup-categories.didomi-consent-popup-categories-nested > div:nth-child(1) > div > div.didomi-consent-popup-data-processing__buttons.didomi-consent-popup-data-processing__buttons_tcf_v2 > div > button:nth-child(2)")).Click();
+            tSleep();
 
             //DisAgreePersonalisedAdvert
-            driver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div:nth-child(2) > div.didomi-consent-popup-categories.didomi-consent-popup-categories-nested > div:nth-child(2) > div > div.didomi-components-accordion-label-container > div.didomi-consent-popup-data-processing__buttons > div > button:nth-child(1)")).Click();
-            Sleep();
+            webDriver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div:nth-child(2) > div.didomi-consent-popup-categories.didomi-consent-popup-categories-nested > div:nth-child(2) > div > div.didomi-components-accordion-label-container > div.didomi-consent-popup-data-processing__buttons > div > button:nth-child(1)")).Click();
+            tSleep();
 
             //AgreePersonalisedAdvert
-            driver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div:nth-child(2) > div.didomi-consent-popup-categories.didomi-consent-popup-categories-nested > div:nth-child(2) > div > div.didomi-components-accordion-label-container > div.didomi-consent-popup-data-processing__buttons > div > button:nth-child(2)")).Click();
-            Sleep();
+            webDriver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div:nth-child(2) > div.didomi-consent-popup-categories.didomi-consent-popup-categories-nested > div:nth-child(2) > div > div.didomi-components-accordion-label-container > div.didomi-consent-popup-data-processing__buttons > div > button:nth-child(2)")).Click();
+            tSleep();
 
             //DisAgreePersonalData
-            driver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div:nth-child(2) > div.didomi-consent-popup-categories.didomi-consent-popup-categories-nested > div:nth-child(3) > div > div.didomi-components-accordion-label-container > div.didomi-consent-popup-data-processing__buttons > div > button:nth-child(1)")).Click();
-            Sleep();
+            webDriver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div:nth-child(2) > div.didomi-consent-popup-categories.didomi-consent-popup-categories-nested > div:nth-child(3) > div > div.didomi-components-accordion-label-container > div.didomi-consent-popup-data-processing__buttons > div > button:nth-child(1)")).Click();
+            tSleep();
 
             //AgreePersonalData
-            driver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div:nth-child(2) > div.didomi-consent-popup-categories.didomi-consent-popup-categories-nested > div:nth-child(3) > div > div.didomi-components-accordion-label-container > div.didomi-consent-popup-data-processing__buttons > div > button:nth-child(2)")).Click();
-            Sleep();
+            webDriver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div:nth-child(2) > div.didomi-consent-popup-categories.didomi-consent-popup-categories-nested > div:nth-child(3) > div > div.didomi-components-accordion-label-container > div.didomi-consent-popup-data-processing__buttons > div > button:nth-child(2)")).Click();
+            tSleep();
 
             //AgreeAll
-            driver.FindElement(By.CssSelector("#didomi-radio-option-agree-to-all")).Click();
-            Sleep();
+            webDriver.FindElement(By.CssSelector("#didomi-radio-option-agree-to-all")).Click();
+            tSleep();
 
             //DisAgreeAll
-            driver.FindElement(By.CssSelector("#didomi-radio-option-disagree-to-all")).Click();
-            Sleep();
+            webDriver.FindElement(By.CssSelector("#didomi-radio-option-disagree-to-all")).Click();
+            tSleep();
         }
 
         [Test]
         public void ChooseAllPartners()
         {
             driver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > span > button")).Click();
-            Sleep();
+            tSleep();
 
             //Disagreeallpartners            
             driver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div.didomi-consent-popup-body__section > div.didomi-consent-popup-vendor.didomi-consent-popup-container-click-all > div.didomi-consent-popup-vendor__buttons > div > button.didomi-components-radio__option.didomi-components-radio__option--unselected")).Click();
-            Sleep();
+            tSleep();
 
             //Agreeallpartners
             driver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div.didomi-consent-popup-body__section > div.didomi-consent-popup-vendor.didomi-consent-popup-container-click-all > div.didomi-consent-popup-vendor__buttons > div > button.didomi-components-radio__option.didomi-components-radio__option--selected.didomi-components-radio__option--agree")).Click();
-            Sleep();
+            tSleep();
 
             //Disagreeallpartners            
             driver.FindElement(By.CssSelector("#didomi-consent-popup > div > div > div > div > div.didomi-consent-popup-body.didomi-popup-body > div.didomi-consent-popup-body__section > div.didomi-consent-popup-vendor.didomi-consent-popup-container-click-all > div.didomi-consent-popup-vendor__buttons > div > button.didomi-components-radio__option.didomi-components-radio__option--unselected")).Click();
-            Sleep();
+            tSleep();
         }
 
         [Test]
@@ -90,19 +89,19 @@ namespace IdnesCZ
         {
             //Agree
             driver.FindElement(By.XPath("//*[@id=\"didomi-consent-popup\"]/div/div/div/div/div[3]/div[1]/div[2]/div/div[2]/div[2]/div/button[2]")).Click();
-            Sleep();
+            tSleep();
 
             //DisAgree
             driver.FindElement(By.XPath("//*[@id=\"didomi-consent-popup\"]/div/div/div/div/div[3]/div[1]/div[2]/div/div[2]/div[2]/div/button[1]")).Click();
-            Sleep();
+            tSleep();
 
             //ExpandPanel
             driver.FindElement(By.Id("didomi-vendor-92")).Click();
-            Sleep();
+            tSleep();
 
             //CollapsePanel
             driver.FindElement(By.Id("didomi-vendor-92")).Click();
-            Sleep();
+            tSleep();
         }
 
         [Test]
@@ -110,19 +109,19 @@ namespace IdnesCZ
         {
             //Agree
             driver.FindElement(By.XPath("//*[@id=\"didomi-consent-popup\"]/div/div/div/div/div[3]/div[1]/div[2]/div/div[4]/div[2]/div/button[2]")).Click();
-            Sleep();
+            tSleep();
 
             //DisAgree
             driver.FindElement(By.XPath("//*[@id=\"didomi-consent-popup\"]/div/div/div/div/div[3]/div[1]/div[2]/div/div[4]/div[2]/div/button[1]")).Click();
-            Sleep();
+            tSleep();
 
             //ExpandPanel
             driver.FindElement(By.Id("didomi-vendor-628")).Click();
-            Sleep();
+            tSleep();
 
             //CollapsePanel
             driver.FindElement(By.Id("didomi-vendor-628")).Click();
-            Sleep();
+            tSleep();
         }
 
         [Test]
@@ -131,21 +130,21 @@ namespace IdnesCZ
             //ExpandInfoAboutUser
             IWebElement ExpandInfoAboutUser = driver.FindElement(By.XPath("//*[@id=\"didomi-consent-popup\"]/div/div/div/div/div[3]/div[2]/div/div[1]/div"));
             ExpandInfoAboutUser.Click();
-            Sleep();
+            tSleep();
 
             //CollapseInfoAboutUser
             IWebElement CollapseInfoAboutUser = driver.FindElement(By.XPath("//*[@id=\"didomi-consent-popup\"]/div/div/div/div/div[3]/div[2]/div/div[1]/div"));
             CollapseInfoAboutUser.Click();
-            Sleep();
+            tSleep();
 
             IWebElement AgreeMyChoices = driver.FindElement(By.XPath("//*[@id=\"didomi-consent-popup\"]/div/div/div/div/div[4]/div/button"));
-            AgreeMyChoices.Click(); 
-            Sleep();
+            AgreeMyChoices.Click();
+            tSleep();
 
             IWebElement AgreeMyChoicesCookies = driver.FindElement(By.XPath("//*[@id=\"didomi-consent-popup\"]/div/div/div/div/div[4]/div/button"));
             AgreeMyChoicesCookies.Click();
-            Sleep();
-            }
+            tSleep();
+        }
 
 
 
